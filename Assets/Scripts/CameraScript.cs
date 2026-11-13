@@ -58,8 +58,15 @@ public class CameraScript : MonoBehaviour
 
 
         targetY = CamHeight + bobHeight;
-        currentPos.y = Mathf.Lerp(currentPos.y, targetY, bobSmoothing * Time.deltaTime);
-        
+        if (playerMovementScript.isGrounded())
+        {
+            currentPos.y = Mathf.Lerp(currentPos.y, targetY, bobSmoothing * Time.deltaTime);
+        }
+        else
+        {
+            currentPos.y = Mathf.Lerp(currentPos.y, currentPos.y, bobSmoothing * Time.deltaTime);
+        }
+
         transform.localPosition = currentPos;
 
 

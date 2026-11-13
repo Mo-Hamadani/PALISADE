@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool running = false;
     public bool crouching = false;
     public float crouchHeight = 0.6f;
+    public float jumpHeight = 1f;
 
     //components
     Rigidbody rb;
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     float runFov = 65f;
     float fovSpeed = 5f;
     float standHeight = 0f;
+    Vector3 lastPos = Vector3.zero;
 
 
     void Start()
@@ -52,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         cameraTransform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        
+
 
         //running
         if (Keyboard.current.shiftKey.isPressed)
@@ -86,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //crouching
-        if (Keyboard.current.cKey.wasPressedThisFrame)
+        if (Keyboard.current.cKey.wasPressedThisFrame ||
+            (crouching && Keyboard.current.spaceKey.wasPressedThisFrame && lastPos.y == transform.position.y))
         { 
             //uncrouch
             if (crouching && canStandUp())
@@ -95,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
                 capsule.height = standHeight;
                 rb.position += Vector3.up * 0.1f;
 
-
+                
             }
             //crouch
             else
@@ -125,6 +130,9 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+
+        }
+        {
             if (Keyboard.current.wKey.isPressed) movementInput.y += 1f;
             if (Keyboard.current.sKey.isPressed) movementInput.y -= 1f;
             if (Keyboard.current.dKey.isPressed) movementInput.x += 1f;
@@ -132,6 +140,16 @@ public class PlayerMovement : MonoBehaviour
 
             targetFov = fov;
         }
+
+        //Jump input
+        
+        if (Keyboard.current.spaceKey.isPressed && canStandUp() && !crouching && isGrounded())
+        {
+            Vector3 jumpUp = Vector3.up * jumpHeight * 10;
+            rb.AddForce(jumpUp);
+        }
+        
+        lastPos = transform.position;
 
         camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, targetFov, fovSpeed * Time.deltaTime);
     }
@@ -170,4 +188,12 @@ public class PlayerMovement : MonoBehaviour
     {
         return !Physics.Raycast(capsule.bounds.center, Vector3.up, (standHeight / 2f) + 0.5f, ~0, QueryTriggerInteraction.Ignore);
     }
+    
+    //isgrounded
+    public bool isGrounded()
+    {
+        return (Physics.Raycast(capsule.bounds.center, Vector3.down, capsule.bounds.extents.y + 0.1f,
+                ~0, QueryTriggerInteraction.Ignore));
+    }
+
 }
