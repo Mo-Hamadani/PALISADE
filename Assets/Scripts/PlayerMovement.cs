@@ -91,14 +91,14 @@ public class PlayerMovement : MonoBehaviour
 
         //crouching
         if (Keyboard.current.cKey.wasPressedThisFrame ||
-            (crouching && Keyboard.current.spaceKey.wasPressedThisFrame && lastPos.y == transform.position.y))
+            (crouching && Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded()))
         { 
             //uncrouch
             if (crouching && canStandUp())
             {
                 crouching = false;
                 capsule.height = standHeight;
-                rb.position += Vector3.up * 0.1f;
+                rb.position += Vector3.up * 0.2f;
 
                 
             }
