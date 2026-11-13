@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771376097}
   - component: {fileID: 771376096}
+  - component: {fileID: 771376098}
   m_Layer: 0
   m_Name: UI_Menu
   m_TagString: Untagged
@@ -174,6 +175,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &771376098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771376095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6075cea74a5c2b849a34758b34465c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuController
 --- !u!1 &1085198006
 GameObject:
   m_ObjectHideFlags: 0
