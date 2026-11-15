@@ -64,7 +64,9 @@ MonoBehaviour:
   deceleration: 30
   running: 0
   crouching: 0
-  crouchHeight: 0.6
+  crouchHeight: 0.3
+  jumpHeight: 1
+  extraGravity: 2
   cameraTransform: {fileID: 1611903980090907628}
 --- !u!136 &8654991074603513474
 CapsuleCollider:
@@ -86,7 +88,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
-  m_Height: 1.5
+  m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3537118933207757135
@@ -97,7 +99,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292679835259788905}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -266,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0f896c29c8aea44bc94daf149ddd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraScript
-  bobAmount: 0.015
+  bobAmount: 0.02
   bobSpeedWalk: 10
-  bobSpeedRun: 18
-  bobSmoothing: 100
+  bobSpeedRun: 20
+  bobSmoothing: 10
