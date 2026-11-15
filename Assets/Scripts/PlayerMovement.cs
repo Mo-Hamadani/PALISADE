@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool crouching = false;
     public float crouchHeight = 0.6f;
     public float jumpHeight = 1f;
+    public float extraGravity = 2f;
 
     //components
     Rigidbody rb;
@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
     float fovSpeed = 5f;
     float standHeight = 0f;
     Vector3 lastPos = Vector3.zero;
-
+    bool jumpRequested = false;
+    
 
     void Start()
     {
@@ -61,11 +62,7 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.shiftKey.isPressed)
         {
             running = true;
-            
-            if (rb.linearVelocity == Vector3.zero)
-            {
-                running = false;
-            }
+
 
             if (crouching)
             {
@@ -130,9 +127,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
-        }
-        {
             if (Keyboard.current.wKey.isPressed) movementInput.y += 1f;
             if (Keyboard.current.sKey.isPressed) movementInput.y -= 1f;
             if (Keyboard.current.dKey.isPressed) movementInput.x += 1f;
@@ -143,10 +137,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Jump input
         
-        if (Keyboard.current.spaceKey.isPressed && canStandUp() && !crouching && isGrounded())
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            Vector3 jumpUp = Vector3.up * jumpHeight * 10;
-            rb.AddForce(jumpUp);
+            jumpRequested = true;
         }
         
         lastPos = transform.position;
@@ -179,8 +172,21 @@ public class PlayerMovement : MonoBehaviour
         horizontalVelocity = Vector3.MoveTowards(horizontalVelocity, targetVelocity, rate * Time.fixedDeltaTime);
         
         //vertical velocity
-        rb.linearVelocity = new Vector3(horizontalVelocity.x,currentVelocity.y,horizontalVelocity.z);
-        rb.AddForce(Vector3.down * 3.5f, ForceMode.Acceleration);
+        float verticalVelocity = currentVelocity.y;
+        if (jumpRequested)
+        {
+            jumpRequested = false;
+            if (canStandUp() && !crouching && isGrounded())
+            {
+                // uses physics equasion so that the jump height is how high the player jumps in meters
+                float gravity = extraGravity + 9.8f;
+                verticalVelocity = Mathf.Sqrt(2f * gravity * jumpHeight);
+            }
+        }
+        //add downwards velocity
+        rb.linearVelocity = new Vector3(horizontalVelocity.x, verticalVelocity, horizontalVelocity.z);
+        rb.AddForce(Vector3.down * extraGravity, ForceMode.Acceleration);
+
 
     }
 
