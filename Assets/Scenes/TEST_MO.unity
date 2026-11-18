@@ -563,6 +563,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b99a702352aaf0741ba1c046f24bdca1, type: 3}
+--- !u!54 &669738604 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3537118933207757135, guid: 1cea35d8e9cd1cc4095a88d67f56a235, type: 3}
+  m_PrefabInstance: {fileID: 4577600268218931433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &688551189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2363,6 +2368,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3041052502569064285, guid: 1cea35d8e9cd1cc4095a88d67f56a235, type: 3}
+      propertyPath: IsDamaged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3041052502569064285, guid: 1cea35d8e9cd1cc4095a88d67f56a235, type: 3}
+      propertyPath: PlayerBody
+      value: 
+      objectReference: {fileID: 669738604}
+    - target: {fileID: -3041052502569064285, guid: 1cea35d8e9cd1cc4095a88d67f56a235, type: 3}
+      propertyPath: ScreenEffect
+      value: 
+      objectReference: {fileID: 8298624652070453103, guid: 8d1cbc005b1a7294bab7bb52df0733b8, type: 3}
     - target: {fileID: 292679835259788905, guid: 1cea35d8e9cd1cc4095a88d67f56a235, type: 3}
       propertyPath: m_Name
       value: Player
