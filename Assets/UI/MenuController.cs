@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UIButton = UnityEngine.UIElements.Button;
 
@@ -16,6 +15,6 @@ public class MenuController : MonoBehaviour
         _PlayButton = _Doc.rootVisualElement.Q<UIButton>("PlayButton");
         _SettingsButton = _Doc.rootVisualElement.Q<UIButton>("SettingsButton");
         _QuitButton = _Doc.rootVisualElement.Q<UIButton>("QuitButton");
-        _PlayButton.clicked += PlayButtonOnClicked
+        //_PlayButton.clicked += PlayButtonOnClicked;
     }
 }
