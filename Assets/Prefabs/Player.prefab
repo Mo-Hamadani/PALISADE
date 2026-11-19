@@ -64,7 +64,7 @@ MonoBehaviour:
   deceleration: 30
   running: 0
   crouching: 0
-  crouchHeight: 0.3
+  crouchHeight: 0.6
   jumpHeight: 1
   extraGravity: 2
   cameraTransform: {fileID: 1611903980090907628}
