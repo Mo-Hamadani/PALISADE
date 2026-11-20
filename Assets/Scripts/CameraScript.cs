@@ -10,9 +10,11 @@ public class CameraScript : MonoBehaviour
 
     private float defaultY = 0f;
     private float targetY = 0f;
+    private float targetX = 0f;
     private float crouchHeight = 0f;
     private float CamHeight = 0f;
     private float CamTargetHeight = 0f;
+    private float ShakeTimer;
 
 
     Rigidbody playerRb;
@@ -65,10 +67,29 @@ public class CameraScript : MonoBehaviour
         else
         {
             currentPos.y = Mathf.Lerp(currentPos.y, currentPos.y, bobSmoothing * Time.deltaTime);
+
+            transform.localPosition = currentPos;
         }
 
-        transform.localPosition = currentPos;
+        if (ShakeTimer > 0f)
+        {
+            if (targetX < 0)
+            {
+                targetX = 3;
+            }
+            else
+            {
+                targetX = -3;
+            }
+            currentPos.x = Mathf.Lerp(currentPos.x, targetX, 3 * Time.deltaTime);
+            ShakeTimer -= Time.deltaTime;
+            transform.localPosition = currentPos;
+        }
 
+    }
 
+    public void ScreenShake()
+    {
+        ShakeTimer = 0.2f;
     }
 }
