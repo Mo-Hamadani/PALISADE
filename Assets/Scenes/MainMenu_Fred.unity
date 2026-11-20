@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6075cea74a5c2b849a34758b34465c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
+  gameSceneName: MO_TEST
 --- !u!1 &1085198006
 GameObject:
   m_ObjectHideFlags: 0
