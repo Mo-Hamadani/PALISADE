@@ -4,33 +4,28 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDamaged : MonoBehaviour
 {
-    //todo: add screen shake, add heartbeat sfx
-
     public bool IsDamaged = false;
     public GameObject ScreenEffect;
+    GameObject ScreenClone;
     public Rigidbody PlayerBody;
-    bool Invincible = false;
-    float InvincibilityTimer = 3f;
+    float InvincibilityTimer;
+    public AudioClip HeartSound;
+    AudioSource AudioPlayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        AudioPlayer = GetComponent<AudioSource>(); //find audioplayer and set sound to heartbeat
+        AudioPlayer.clip = HeartSound;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Invincible == true)
+        if(InvincibilityTimer > 0)
         {
             InvincibilityTimer -= Time.deltaTime; //decrease timer
-            if(InvincibilityTimer <= 0f) //if timer has run out
-            {
-                InvincibilityTimer = 3f; //reset timer
-                Invincible = false;
-            }
         }
-
     }
 
     private void OnCollisionEnter(Collision collision) //on collision
@@ -44,19 +39,23 @@ public class PlayerDamaged : MonoBehaviour
             }
             else
             {
-                Invincible = true;
+                InvincibilityTimer = 2f; //start invincibility
                 IsDamaged = true; //set damaged to true
-                //apply screenshake
-                GameObject ScreenClone = (GameObject)Instantiate(ScreenEffect); //create screen effect
+                var Camera = GetComponentInChildren<CameraScript>(); //shake camera
+                Camera.ScreenShake();
+                ScreenClone = (GameObject)Instantiate(ScreenEffect); //create screen effect
+                AudioPlayer.Play();
             }
         }
 
-        if(collision.gameObject.layer == 0) //change to layer for health items
+        if(collision.gameObject.layer == 30) //if collider is on healing layer
         {
             if (IsDamaged == true)
             {
                 IsDamaged = false; //heals player
                 Destroy(collision.gameObject); //destroys health item
+                Destroy(ScreenClone); //removes screen effect
+                AudioPlayer.Stop();
             }
         }
     }
