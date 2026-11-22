@@ -148,7 +148,7 @@ public class MenuController : MonoBehaviour
     }
     private void OnPlayClicked() 
     {
-        SceneManager.LoadScene(gameSceneName);
+        SceneManager.LoadScene("MO_TEST");
     }
     private void OnSettingsClicked()
     {
