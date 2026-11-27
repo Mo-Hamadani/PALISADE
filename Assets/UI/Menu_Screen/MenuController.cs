@@ -9,7 +9,6 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private string gameSceneName = "GameScene";
     private Button PlayButton, SettingsButton, QuitButton, BackButton;
     private VisualElement Buttons, SettingsPanel, Title;
     private Slider VolumeSlider;
