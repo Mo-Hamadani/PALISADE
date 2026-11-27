@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f50c23014bbd4e8047dbb49cf7d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooting
-  strength: 20
+  strength: 18
   FlareProjectile: {fileID: 5691703510398657503, guid: 72b6971e53d8c3c42b38d2d58be7cb42, type: 3}
 --- !u!1 &799911557
 GameObject:
@@ -1598,13 +1598,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112198462}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.70710695, z: -0, w: 0.70710665}
   m_LocalPosition: {x: 7.90075, y: 0.44, z: 0.09494001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 48517820}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1138940372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3070,7 +3070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6391551845366944550, guid: 72b6971e53d8c3c42b38d2d58be7cb42, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.094
       objectReference: {fileID: 0}
     - target: {fileID: 6391551845366944550, guid: 72b6971e53d8c3c42b38d2d58be7cb42, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3236,7 +3236,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3359,6 +3359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 8045585371033205286, guid: 77d1287a06eef1d4f9c244af23a797d7, type: 3}
+      propertyPath: m_TagString
+      value: Panel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3375,6 +3379,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3480463965363952856, guid: 77d1287a06eef1d4f9c244af23a797d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6732585602163055362}
+    - targetCorrespondingSourceObject: {fileID: 3480463965363952856, guid: 77d1287a06eef1d4f9c244af23a797d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6732585602163055366}
     - targetCorrespondingSourceObject: {fileID: 8045585371033205286, guid: 77d1287a06eef1d4f9c244af23a797d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4021996633063809655}
@@ -3392,6 +3399,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockerDoor
   playerInside: 0
+--- !u!65 &6732585602163055366
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957611315798111708}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.00030708045, y: 0.008521868, z: 0.012544223}
+  m_Center: {x: -0.00015353278, y: 0.0041863453, z: -0.0000000018626451}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

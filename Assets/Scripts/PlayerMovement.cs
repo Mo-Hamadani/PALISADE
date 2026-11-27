@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     //components
     Rigidbody rb;
     Camera camera;
-    CapsuleCollider capsule;
+    public CapsuleCollider capsule;
     public Transform cameraTransform;
 
     //private variables

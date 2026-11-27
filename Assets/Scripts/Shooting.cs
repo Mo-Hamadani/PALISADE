@@ -20,11 +20,11 @@ public class Shooting : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Vector3 spawnLocation = (0.08f * Vector3.down) + (0.5f * cam.transform.forward) + cam.transform.position;
+            Vector3 spawnLocation = (0.04f * Vector3.down) + (0.5f * cam.transform.forward) + cam.transform.position;
             
             GameObject flare = Instantiate(FlareProjectile, spawnLocation, cam.transform.rotation);
             Rigidbody flareRb = flare.GetComponent <Rigidbody>();
-            flareRb.linearVelocity = cam.transform.forward * strength;
+            flareRb.linearVelocity = (cam.transform.forward+(Vector3.up * 0.1f)) * strength;
 
         }
     }
